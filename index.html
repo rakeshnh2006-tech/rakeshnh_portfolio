@@ -312,6 +312,51 @@
   .hero-marquee:not(.is-animated) {
     visibility: hidden;
   }
+  .preloader-marquee-wrapper {
+    position: absolute;
+    top: 7vh;
+    left: 0;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    z-index: 120;
+    pointer-events: none;
+  }
+  @media screen and (max-width: 767px) {
+    .preloader-marquee-wrapper {
+      top: 5vh;
+    }
+  }
+  .preloader-marquee {
+    grid-column-gap: 2.5rem;
+    grid-row-gap: 2.5rem;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 1vh;
+    padding-left: 2.5rem;
+    display: flex;
+    position: relative;
+    overflow: visible;
+    flex-shrink: 0;
+  }
+  .preloader-marquee.marquee-animation-start {
+    animation: marquee 35s linear infinite;
+  }
+  .preloader-marquee:not(.is-animated) {
+    visibility: hidden;
+  }
+  .preloader-marquee-wrapper .marquee-heading {
+    font-size: clamp(3rem, 15vh, 9.5rem) !important;
+    line-height: 1 !important;
+    color: var(--darklighter) !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+  }
+  @media screen and (max-width: 767px) {
+    .preloader-marquee-wrapper .marquee-heading {
+      font-size: clamp(2.4rem, 11vw, 4.5rem) !important;
+    }
+  }
   .is-firefox-browser .zero-text br {
     display: none !important;
   }
@@ -444,7 +489,7 @@
     opacity: 1;
   }
 }
-</style></div><div id="preloader" class="w-layout-blockcontainer preload-container w-container"><div class="text-grid"><div id="line" data-w-id="67cf7f8d-51c3-0557-3db5-7a1eb93956d7" class="col w-node-_67cf7f8d-51c3-0557-3db5-7a1eb93956d7-ef5b982d"><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div><div id="line" data-w-id="89fb16af-e6b1-fc17-6ce6-20af0a0bb521" class="col"><div id="zero1" class="zero-text zero w-node-a77074df-1cd8-d36c-f0d3-7f2e657ccc2e-ef5b982d">0<br/></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div><div id="line" data-w-id="2c546267-2314-5a1d-5542-236e910f64dc" class="col"><div id="zero2" class="zero-text zero">0<br/></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div><div id="line" data-w-id="44f65394-95dc-5df3-4c21-cbc11ee732e2" class="col w-node-_44f65394-95dc-5df3-4c21-cbc11ee732e2-ef5b982d"><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div id="zero3" class="zero-text zero">0<br/></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div><div id="line" data-w-id="6ee5ee2c-ec0b-2320-b60d-44c179b0b91d" class="col w-node-_6ee5ee2c-ec0b-2320-b60d-44c179b0b91d-ef5b982d"><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div><div id="line" data-w-id="15aa6cc3-e0c2-94c2-5ece-bf72b4df2bcc" class="col w-node-_15aa6cc3-e0c2-94c2-5ece-bf72b4df2bcc-ef5b982d"><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div></div></div><div class="gtm-code w-embed w-iframe"><!-- Google Tag Manager (noscript) -->
+</style></div><div id="preloader" class="w-layout-blockcontainer preload-container w-container"><div class="preloader-marquee-wrapper"><div class="preloader-marquee"><h1 class="marquee-heading">RAKESH</h1><h1 class="marquee-heading">NH</h1><h1 class="marquee-heading">RAKESH</h1><h1 class="marquee-heading">NH</h1></div><div class="preloader-marquee"><h1 class="marquee-heading">RAKESH</h1><h1 class="marquee-heading">NH</h1><h1 class="marquee-heading">RAKESH</h1><h1 class="marquee-heading">NH</h1></div></div><div class="text-grid"><div id="line" data-w-id="67cf7f8d-51c3-0557-3db5-7a1eb93956d7" class="col w-node-_67cf7f8d-51c3-0557-3db5-7a1eb93956d7-ef5b982d"><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div><div id="line" data-w-id="89fb16af-e6b1-fc17-6ce6-20af0a0bb521" class="col"><div id="zero1" class="zero-text zero w-node-a77074df-1cd8-d36c-f0d3-7f2e657ccc2e-ef5b982d">0<br/></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div><div id="line" data-w-id="2c546267-2314-5a1d-5542-236e910f64dc" class="col"><div id="zero2" class="zero-text zero">0<br/></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div><div id="line" data-w-id="44f65394-95dc-5df3-4c21-cbc11ee732e2" class="col w-node-_44f65394-95dc-5df3-4c21-cbc11ee732e2-ef5b982d"><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div id="zero3" class="zero-text zero">0<br/></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div><div id="line" data-w-id="6ee5ee2c-ec0b-2320-b60d-44c179b0b91d" class="col w-node-_6ee5ee2c-ec0b-2320-b60d-44c179b0b91d-ef5b982d"><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div><div id="line" data-w-id="15aa6cc3-e0c2-94c2-5ece-bf72b4df2bcc" class="col w-node-_15aa6cc3-e0c2-94c2-5ece-bf72b4df2bcc-ef5b982d"><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div><div class="pixel"></div></div></div></div><div class="gtm-code w-embed w-iframe"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K43K2ZQ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) --></div><div class="custom-styles w-embed"><style>
@@ -1874,12 +1919,15 @@ document.addEventListener("DOMContentLoaded", () => {
       if (preloaderEditor) {
         preloaderEditor.style.display = "none";
       }
+      heroMarqueeAnimationStart();
       return;
     }
 
     // Mark the animation as shown in sessionStorage
     is_starter_animation = sessionStorage.getItem("preloadAnimationShown", "true");
     sessionStorage.setItem("preloadAnimationShown", "true");
+
+    preloaderMarqueeAnimationStart();
 
     function wrapTextInSpans(selector, index) {
       const element = document.querySelector(selector);
@@ -2043,6 +2091,65 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       });
     }
+  }
+
+  function preloaderMarqueeAnimationStart() {
+    const preloaderMarquees = document.querySelectorAll(".preloader-marquee");
+    if (!preloaderMarquees.length) return;
+
+    preloaderMarquees.forEach((item) => {
+      item.classList.add("marquee-animation-start");
+
+      const originalStyle = {
+        width: item.style.width,
+        height: item.style.height,
+      };
+
+      const originalWidth = window.getComputedStyle(item).width;
+      const originalHeight = window.getComputedStyle(item).height;
+
+      item.style.width = originalWidth;
+      item.style.height = originalHeight;
+
+      let split;
+      let itemTl = gsap.timeline({
+        paused: true,
+        onComplete: () => {
+          if (split) split.revert();
+          item.style.width = originalStyle.width;
+          item.style.height = originalStyle.height;
+        },
+      });
+      split = new SplitText(item, { type: "words, chars" });
+
+      itemTl.from(
+        split.chars,
+        {
+          autoAlpha: 0,
+          duration: 0.6,
+          stagger: { each: 0.04, from: "random" },
+          ease: FLICKER_EASE,
+        },
+        0
+      );
+
+      itemTl.to(
+        split.chars,
+        {
+          scrambleText: {
+            chars: SCRAMBLE_CHAR_SET,
+            text: "{original}",
+            speed: 2,
+            delimiter: "",
+          },
+          duration: 0.8,
+        },
+        0
+      );
+
+      item.classList.add("is-animated");
+      itemTl.timeScale(1).play();
+    });
   }
 
   function animateHeroHeader() {
