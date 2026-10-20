@@ -1793,21 +1793,23 @@ document.addEventListener("DOMContentLoaded", () => {
     body.classList.add("is-safari-browser");
   }
   if (!isSafari) {
-    if (Webflow.env("editor") === undefined) {
-      lenis = new Lenis();
+    if (typeof Webflow === "undefined" || !Webflow.env || Webflow.env("editor") === undefined) {
+      if (typeof Lenis !== "undefined") {
+        lenis = new Lenis();
 
-      function raf(time) {
-        lenis.raf(time);
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
         requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
 
-      function connectToScrollTrigger() {
-        lenis.on("scroll", ScrollTrigger.update);
-        gsap.ticker.lagSmoothing(0);
+        function connectToScrollTrigger() {
+          lenis.on("scroll", ScrollTrigger.update);
+          gsap.ticker.lagSmoothing(0);
+        }
+        // Uncomment this if using GSAP ScrollTrigger
+        connectToScrollTrigger();
       }
-      // Uncomment this if using GSAP ScrollTrigger
-      connectToScrollTrigger();
     }
   }
 });
@@ -1906,7 +1908,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const preloaderEditor = document.querySelector("#preloader");
 
     // Check if in Webflow Editor
-    if (Webflow.env("editor")) {
+    if (typeof Webflow !== "undefined" && Webflow.env && Webflow.env("editor")) {
       console.log("In Webflow Editor, skipping preloader.");
       if (preloaderEditor) {
         preloaderEditor.style.display = "none";
@@ -1918,6 +1920,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (sessionStorage.getItem("preloadAnimationShown") === "true") {
       if (preloaderEditor) {
         preloaderEditor.style.display = "none";
+      }
+      const preMarquee = document.querySelector(".preloader-marquee-wrapper");
+      if (preMarquee) {
+        preMarquee.style.display = "none";
       }
       heroMarqueeAnimationStart();
       return;
@@ -1982,9 +1988,11 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.search === "" &&
       window.location.hash === "" &&
       !isSafari &&
-	  Webflow.env("editor") === undefined
+      (typeof Webflow === "undefined" || !Webflow.env || Webflow.env("editor") === undefined)
     ) {
-      	lenis.stop();
+      if (typeof lenis !== "undefined" && lenis && typeof lenis.stop === "function") {
+        lenis.stop();
+      }
     }
 
     if (isSafari) {
@@ -2036,14 +2044,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 200);
 
     setTimeout(() => {
-      gsap.to(`#zeroText1, #zeroText2, #zeroText3`, {
-        opacity: 0, // Animate the spans' opacity directly
+      gsap.to(`#zeroText1, #zeroText2, #zeroText3, .preloader-marquee-wrapper`, {
+        opacity: 0, // Animate the countdown spans and preloader marquee wrapper opacity directly
         duration: 0.5,
         onComplete: () => {
-          // Optional: Hide the parent elements after the animation
+          // Hide elements after fade-out
           document.querySelectorAll("#zero1, #zero2, #zero3").forEach((el) => {
-            el.style.display = "none"; // You can keep this if you want to remove them from the view
+            el.style.display = "none";
           });
+          const preMarquee = document.querySelector(".preloader-marquee-wrapper");
+          if (preMarquee) {
+            preMarquee.style.display = "none";
+          }
         },
       });
     }, (maxCount + 1) * 200);
@@ -2051,10 +2063,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function pixelate(interval) {
     const preloader = document.querySelector("#preloader");
-    const columns = preloader.querySelectorAll(".col");
+    const preMarquee = document.querySelector(".preloader-marquee-wrapper");
+    if (preMarquee) {
+      preMarquee.style.display = "none";
+    }
+
+    const columns = preloader ? preloader.querySelectorAll(".col") : null;
     let allTargetDivs = [];
 
-    if (!columns) {
+    if (!columns || columns.length === 0) {
+      if (preloader) {
+        preloader.style.display = "none";
+      }
+      clearInterval(interval);
       return;
     }
 
@@ -2080,7 +2101,15 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: duration,
         stagger: { amount: 1, from: "random" },
         onComplete: () => {
-          !isSafari && Webflow.env("editor") === undefined && lenis.start();
+          try {
+            if (!isSafari && (typeof Webflow === "undefined" || !Webflow.env || Webflow.env("editor") === undefined)) {
+              if (typeof lenis !== "undefined" && lenis && typeof lenis.start === "function") {
+                lenis.start();
+              }
+            }
+          } catch (e) {
+            console.warn(e);
+          }
           if (isSafari) {
             document.body.style.overflow = "auto";
           }
@@ -2090,6 +2119,11 @@ document.addEventListener("DOMContentLoaded", () => {
           clearInterval(interval);
         },
       });
+    } else {
+      if (preloader) {
+        preloader.style.display = "none";
+      }
+      clearInterval(interval);
     }
   }
 
@@ -2196,7 +2230,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function marqueeAnimation() {
-    const boxes = document.querySelectorAll(".marquee-heading");
+    const boxes = document.querySelectorAll(".hero-marquee .marquee-heading");
 
     loop = horizontalLoop(boxes, {
       repeat: -1,
