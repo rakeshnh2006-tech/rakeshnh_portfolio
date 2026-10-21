@@ -49,7 +49,8 @@ class LocalhostHandler(http.server.SimpleHTTPRequestHandler):
 
     def log_message(self, format, *args):
         # Clean logging
-        sys.stderr.write(f"[{self.log_date_time_string()}] {args[0]} {args[1]} -> {args[2]}\n")
+        msg = format % args if args else format
+        sys.stderr.write(f"[{self.log_date_time_string()}] {msg}\n")
 
 class ReusableTCPServer(socketserver.TCPServer):
     allow_reuse_address = True
